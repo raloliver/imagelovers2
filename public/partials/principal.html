@@ -21,7 +21,7 @@
 </div> <!-- fim row -->
 
 <div class="row">
-    <meu-painel class="col-md-2 painel-animado" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
+    <meu-painel class="col-md-2 painel-animado well-lg" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
         <minha-foto url="{{foto.url}}" alt="{{foto.titulo}}"></minha-foto>
 
 		<a class="btn btn-primary btn-block" href="/#/fotos/edit/{{foto._id}}">
