@@ -1,12 +1,8 @@
-var express = require('express')
-    ,app = express()
-    ,bodyParser = require('body-parser')
-    ,routes = require('../app/routes');
+var express = require('express');
+var app = express(); //instância do express
 
+//middleware static
 app.use(express.static('./public'));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
 
-routes(app);
-
+//Express: conjunto de filtros e middlewares que são aplicados em cada requisição.
 module.exports = app;

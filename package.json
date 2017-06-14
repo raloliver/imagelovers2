@@ -1,17 +1,19 @@
 {
-  "name": "alurapic",
-  "version": "1.0.0",
+  "name": "imagelovers2",
+  "version": "0.2.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raloliver/imagelovers2.git"
+  },
+  "author": "@raloliver",
+  "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.12.3",
-    "express": "^4.12.3",
-    "nedb": "^1.1.2"
+    "express": "^4.13.3"
   }
 }
