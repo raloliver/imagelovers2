@@ -6,13 +6,15 @@ var consign = require('consign'); //instância do consign: módulo para importar
 app.use(express.static('./public'));
 
 //aqui usamos o consign para esquercermos as rotas. usamos o .into para informar que as rotas recebem uma instância do express
-consign().include('app/routes').into(app);
-
-/**
-//routes (o módulo importado aqui, recebe o parâmetro app)
-require('../app/routes/foto')(app);
-require('../app/routes/grupo')(app);
- */
+//rota depende de api e api não depende de ninguém
+//usando .then, realizo a inclusão de outras pastas no consign
+//usando o cwd (current working directory) você declara o diretório atual de trabalho e com isso, a instância da api nas rotas fica menos verbosa
+consign({
+        cwd: 'app'
+    })
+    .include('api')
+    .then('routes')
+    .into(app);
 
 //Express: conjunto de filtros e middlewares que são aplicados em cada requisição.
 module.exports = app;
