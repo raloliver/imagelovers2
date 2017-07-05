@@ -14,5 +14,9 @@ module.exports = function (app) {
         console.log('Req p/ foto ' + req.params.id)
     })
     */
-    app.get('/v1/fotos/:id', api.buscaId)
+
+    //é possível definir uma rota padrão usando .route()
+    app.route('/v1/fotos/:id')
+       .get(api.buscaId)
+       .delete(api.removeId)
 }

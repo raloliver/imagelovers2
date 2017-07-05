@@ -27,4 +27,17 @@ api.buscaId = function (req, res) {
     res.json(foto);
 };
 
+api.removeId = function (req, res) {
+    'use strict'
+    //o filter (ES5) é utilizado para filtrar o item que será deletado
+    //reatribuímos a variável "fotos" ao novo item do array, devolvendo um novo objeto (mesmo dando refresh na página)
+    fotos = fotos.filter(function (foto) {
+        return foto._id != req.params.id;
+    })
+
+    //o status 204: tudo ok mas ñ devolve nenhuma informação
+    //res.status(204).end();
+    res.sendStatus(204);
+}
+
 module.exports = api;
