@@ -1,9 +1,13 @@
 var express = require('express');
 var app = express(); //instância do express
 var consign = require('consign'); //instância do consign: módulo para importar as rotas automaticamente
+var bodyParser = require('body-parser'); //middleware necessário para popular os dados (req.body)
 
 //middleware static
 app.use(express.static('./public'));
+
+//middleware p/ popular os dados (req.body) que devem ser iniciado antes das rotas
+app.use(bodyParser.json());
 
 //aqui usamos o consign para esquercermos as rotas. usamos o .into para informar que as rotas recebem uma instância do express
 //rota depende de api e api não depende de ninguém

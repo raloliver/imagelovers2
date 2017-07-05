@@ -1,4 +1,5 @@
 var api = {};
+var countId = 3;
 var fotos = [{
             _id: 1,
             titulo: 'Seu Animal',
@@ -38,6 +39,20 @@ api.removeId = function (req, res) {
     //o status 204: tudo ok mas ñ devolve nenhuma informação
     //res.status(204).end();
     res.sendStatus(204);
+}
+
+api.adiciona = function (req, res) {
+    'use strict'
+    //gambiarra inicial pra geral o Id
+    let foto = req.body;
+    foto._id = countId++;
+
+    fotos.push(foto);
+    //por padrão o método .body precisa de um middleware para popular os dados
+    console.info('Foto com ID ' + foto._id + ': cadastrada com sucesso!');
+
+    //devemos dar uma resposta pra o servidor, já que fizemos uma requisão
+    res.json(foto);
 }
 
 module.exports = api;
