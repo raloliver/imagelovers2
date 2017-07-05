@@ -21,5 +21,6 @@ module.exports = function (app) {
     //é possível definir uma rota padrão usando .route()
     app.route('/v1/fotos/:id')
        .get(api.buscaId)
-       .delete(api.removeId);
+       .delete(api.removeId)       
+       .put(api.atualiza);
 }

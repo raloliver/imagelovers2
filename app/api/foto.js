@@ -39,7 +39,7 @@ api.removeId = function (req, res) {
     //o status 204: tudo ok mas ñ devolve nenhuma informação
     //res.status(204).end();
     res.sendStatus(204);
-}
+};
 
 api.adiciona = function (req, res) {
     'use strict'
@@ -49,10 +49,28 @@ api.adiciona = function (req, res) {
 
     fotos.push(foto);
     //por padrão o método .body precisa de um middleware para popular os dados
-    console.info('Foto com ID ' + foto._id + ': cadastrada com sucesso!');
+    console.info('Foto com ID ' + foto._id + ' cadastrada com sucesso!');
 
     //devemos dar uma resposta pra o servidor, já que fizemos uma requisão
     res.json(foto);
+};
+
+api.atualiza = function (req, res) {
+    'use strict'
+
+    let foto = req.body;
+    let fotoId = req.params.id;
+
+    //.findIndex() método do ES2015, o ID da foto é igual ao valor da propriedade que está sendo varrida?
+    let indice = fotos.findIndex(function (foto) {
+        return foto._id == fotoId;
+    })
+    
+    //passando os dados do req.body para a lista de itens (fotos)
+    fotos[indice] = foto;
+
+    //tudo ok (status 200). PRECISAMOS DAR SEMPRE UMA RESPOSTA AO SERVIDOR.
+    res.sendStatus(200);
 }
 
 module.exports = api;
